@@ -4,32 +4,109 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Home Page | LPU Cavite LMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
 
-<!-- Header -->
+<!-- Icon set used by the sidebar (solid maroon icons) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-person" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+<symbol id="i-dash" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1z"/></symbol>
+<symbol id="i-tasks" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></symbol>
+<symbol id="i-mega" viewBox="0 0 24 24"><path d="M18 11v2h4v-2h-4zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zM20.4 5.6c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4z"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></symbol>
+<symbol id="i-out" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></symbol>
+</defs></svg>
+
+<!-- SECTION: Header (logo + top navigation). Rendered by ../header/header.js -->
 <div id="site-header"></div>
 
-<!-- Content -->
-<main>
-  <h1>Home Page</h1>
+<div class="layout">
 
-  <section id="progress">
-    <h2>Student Task Progress</h2>
-    <p>TODO: content here.</p>
-  </section>
+  <!-- SECTION: Sidebar (student profile, menu, log out) -->
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar"><svg class="ic"><use href="#i-person"/></svg></div>
+      <strong class="hello">Jajangmyeon</strong>
+      <!-- Mobile only: button that opens/closes the sidebar menu (see setupMobileMenu() in homepage.js) -->
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sidebar-menu">☰ Menu</button>
+      <!-- Student section, shown below the profile row -->
+      <small class="student-section">BSIT NS - 202</small>
+    </div>
+    <nav class="menu" id="sidebar-menu">
+      <a class="active" href="#"><svg class="ic"><use href="#i-dash"/></svg> Dashboard</a>
+      <a href="#"><svg class="ic"><use href="#i-book"/></svg> My Courses</a>
+      <a href="#"><svg class="ic"><use href="#i-tasks"/></svg> View Tasks</a>
+      <a href="#"><svg class="ic"><use href="#i-cal"/></svg> Schedule</a>
+      <a href="#"><svg class="ic"><use href="#i-mega"/></svg> Announcements</a>
+      <a href="#"><svg class="ic"><use href="#i-gear"/></svg> Settings</a>
+    </nav>
+    <a class="logout" href="#"><svg class="ic"><use href="#i-out"/></svg> Log out</a>
+  </aside>
 
-  <section id="announcements">
-    <h2>Announcements</h2>
-    <p>TODO: content here.</p>
-  </section>
+  <main class="content">
 
-  <section id="certificates">
-    <h2>School Certificates</h2>
-    <p>TODO: content here.</p>
-  </section>
-</main>
+    <!-- SECTION: Welcome banner (greeting + today's date). Filled by renderWelcomeDate() -->
+    <section class="welcome">
+      <div>
+        <h1>Welcome back, Jajangmyeon!</h1>
+        <p>Here's your academic overview for today.</p>
+      </div>
+      <div class="date"><strong id="today-date"></strong><small id="today-day"></small></div>
+    </section>
+
+    <div class="grid">
+      <div class="col-main">
+
+        <!-- SECTION: Current Tasks list. Filled by renderCurrentTasks() -->
+        <section class="card" id="current-tasks">
+          <div class="card-head">
+            <div><h2>Current Tasks</h2><p>Stay on track with your requirements.</p></div>
+            <a href="#" class="link">View all tasks →</a>
+          </div>
+          <div id="task-list"></div>
+        </section>
+
+        <div class="row">
+          <!-- SECTION: Upcoming Schedule. Filled by renderUpcomingSchedule() -->
+          <section class="card" id="schedule">
+            <div class="card-head small"><span class="icon sm">📅</span><h2>Upcoming Schedule</h2><a href="#" class="link">View full schedule →</a></div>
+            <div id="schedule-list"></div>
+          </section>
+
+          <!-- SECTION: Recent Announcements. Filled by renderRecentAnnouncements() -->
+          <section class="card" id="announcements">
+            <div class="card-head small"><span class="icon sm">📢</span><h2>Recent Announcements</h2><a href="#" class="link">View all →</a></div>
+            <div id="announcement-list"></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-side">
+
+        <!-- SECTION: General Tasks (donut chart + legend). Filled by renderGeneralTasks() -->
+        <section class="card" id="progress">
+          <div class="card-head"><span class="icon round">◎</span><div><h2>General Tasks</h2><p>Overall completion rate</p></div></div>
+          <div class="donut-wrap">
+            <div class="donut" id="donut"><div class="donut-center"><strong id="donut-pct"></strong><small>Completed</small></div></div>
+            <ul class="legend" id="donut-legend"></ul>
+          </div>
+        </section>
+
+        <!-- SECTION: Academic Progress bars. Filled by renderAcademicProgress() -->
+        <section class="card" id="academic">
+          <div class="card-head"><span class="icon plain">📊</span><div><h2>Academic Progress</h2><p>Keep going! You're doing great.</p></div></div>
+          <div id="progress-bars"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
 
 <script src="../header/header.js"></script>
 <script src="homepage.js"></script>

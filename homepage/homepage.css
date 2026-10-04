@@ -1,6 +1,166 @@
-/* Page styles for this folder. Edit freely. The header styles live in /header/header.css and are scoped, so they will not clash. */
-body{margin:0;font-family:"Fira Sans","Segoe UI",Arial,sans-serif;color:#2b2c30;background:#fff}
-main{max-width:1000px;margin:0 auto;padding:32px 24px 64px}
-main h1{color:#c8102e;margin:0 0 24px}
-main section{scroll-margin-top:24px;padding:24px 0;border-top:1px solid #eee}
-main section h2{margin:0 0 8px;color:#9b0c23}
+:root{--red:#a50f2d;--red-d:#8c0b25;--nav:#c8102e;--tint:#f6e6e9;--tint2:#f1dade;--bg:#ffffff;--card:#fff;--text:#2a1d20;--mute:#7a6a6e;--green:#2e9e5b;--amber:#e8a317;}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100vh;font-family:"Poppins","Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);font-size:16.5px;padding-top:env(safe-area-inset-top,0)}
+a{color:inherit;text-decoration:none}
+small{color:var(--mute);font-size:14px}
+.layout{flex:1;display:grid;grid-template-columns:215px 1fr;gap:22px;padding:0 18px 0 0}
+.content{padding-top:16px;padding-bottom:16px}
+
+/* Sidebar */
+.sidebar{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;padding:18px 12px 16px;background:linear-gradient(180deg,#f8eaed 0%,#f3dde2 100%);border-right:1px solid #ecd3d9;border-radius:0}
+.sidebar::after{content:"";position:absolute;left:0;right:0;bottom:50px;height:190px;background:var(--sidebar-img,none) center bottom/cover no-repeat;opacity:.18;pointer-events:none}
+.sidebar>*{position:relative;z-index:1}
+.ic{width:22px;height:22px;fill:currentColor;flex:none}
+.menu a .ic,.logout .ic{color:var(--red-d)}
+.menu a.active .ic{color:#fff}
+.menu-toggle{display:none;margin-left:auto;background:var(--red);color:#fff;border:0;border-radius:8px;padding:8px 12px;font:inherit;font-size:15.5px;cursor:pointer}
+.menu-toggle:focus-visible,.menu a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.profile{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;flex:none}
+.avatar .ic{width:26px;height:26px;color:#fff}
+.menu{display:flex;flex-direction:column;gap:4px}
+.menu a{padding:11px 12px;border-radius:10px;display:flex;gap:14px;font-weight:500;align-items:center;font-size:15.5px}
+.menu a{transition:background .15s}
+.menu a:hover{background:#e6c3cb;color:var(--red-d)}
+.menu a.active:hover{background:var(--red-d);color:#fff}
+.menu a.active{background:var(--red);color:#fff;font-weight:600;box-shadow:0 2px 6px rgba(140,11,37,.3)}
+.badge{margin-left:auto;background:var(--red);color:#fff;border-radius:50%;width:16px;height:16px;font-size:12.5px;display:grid;place-items:center}
+.logout{margin-top:auto;padding:10px 12px;font-size:14px;display:flex;align-items:center;gap:14px}
+
+/* Welcome */
+.welcome{position:relative;overflow:hidden;background-color:var(--tint);background-image:linear-gradient(90deg,rgba(246,230,233,.96) 35%,rgba(246,230,233,.55)),var(--welcome-img,none);background-size:cover;background-position:center;border-radius:14px;padding:24px 20px;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;min-height:110px}
+.welcome h1{color:var(--red);font-size:26.5px;margin-bottom:6px}
+.welcome p{font-size:14px;color:var(--mute)}
+.date{display:flex;flex-direction:column;text-align:right;font-size:15.5px}
+
+/* Grid + cards */
+.grid{display:grid;grid-template-columns:1fr 370px;gap:16px}
+.col-main,.col-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card{background:var(--tint);border-radius:14px;padding:14px;box-shadow:0 1px 6px rgba(120,20,40,.06)}
+#schedule,#announcements,#academic{background:var(--card)}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.card-head h2{font-size:16.5px;color:var(--red-d)}
+.card-head p{font-size:13px;color:var(--mute)}
+.card-head .link{margin-left:auto;font-size:12.5px;font-weight:600}
+.card-head.small h2{font-size:14.5px}
+.icon{font-size:22.5px}.icon.sm{font-size:16.5px}
+.icon.round{font-size:28px;color:var(--red)}
+
+/* Tasks */
+.task{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:10px;padding:6px 12px;margin-bottom:6px;border:1px solid #f0dfe2}
+.check{width:17px;height:17px;border-radius:50%;border:2px solid #d9b8bf;flex:none;display:grid;place-items:center;font-size:14px}
+.check.done{background:var(--green);border-color:var(--green);color:#fff}
+.check.progress{border-color:var(--amber);color:var(--amber)}
+.task-info{flex:1;display:flex;flex-direction:column;gap:1px}
+.tag{align-self:flex-start;background:#f3c9d1;color:var(--red-d);font-size:10.5px;font-weight:600;padding:0 5px;border-radius:4px}
+.task-info b{font-size:14px;font-weight:600}
+.status{font-size:11.5px;padding:3px 10px;border-radius:12px;min-width:82px;text-align:center;font-weight:500}
+.status.completed{background:#d6f0e0;color:#1f7a45}
+.status.in-progress{background:#fdeec4;color:#9a6b05}
+.status.pending{background:#f9d9de;color:var(--red)}
+
+/* Schedule + announcements */
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sched{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #f3e6e8;font-size:14px}
+.sched .day{background:var(--tint);border-radius:6px;padding:3px 8px;text-align:center;font-weight:700;font-size:16.5px;line-height:1.1}
+.sched .day small{display:block;font-size:10px;color:var(--red)}
+.sched div:nth-child(2){flex:1;display:flex;flex-direction:column}
+.ann{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f3e6e8;font-size:14px}
+.ann::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:5px;flex:none}
+.ann div{flex:1;display:flex;flex-direction:column}
+.ann small:last-child{white-space:nowrap}
+
+/* Donut */
+.donut-wrap{display:flex;align-items:center;gap:26px;padding:6px 4px 4px}
+.donut{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;flex:none}
+.donut-center{width:68%;aspect-ratio:1;height:auto;border-radius:50%;background:var(--tint);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-center strong{font-size:31px}
+.legend{list-style:none;padding:0;flex:1;font-size:16px}
+.legend li{display:flex;align-items:center;gap:8px;padding:8px 0}
+.legend li b{margin-left:auto}
+.dot{width:11px;height:11px;border-radius:50%}
+.legend .total{border-top:1px solid #e3c9cf;margin-top:2px;padding-left:19px}
+
+/* Progress bars */
+.pbar{margin-bottom:18px;font-size:16px}
+.pbar .top{display:flex;justify-content:space-between;margin-bottom:7px;font-weight:500}
+.pbar .top span::before{content:"● ";color:var(--red);font-size:10px}
+.track{height:10px;border-radius:5px;background:#ecdadd;overflow:hidden}
+.fill{height:100%;background:var(--red);border-radius:4px}
+
+/* Mobile / tablet */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;padding:0 12px 12px}
+  .content{padding-top:0}
+  .sidebar{min-height:0;margin:0 -12px;padding:12px}
+  .profile{width:100%}
+  .menu-toggle{display:block}
+  .sidebar .menu,.sidebar .logout{display:none}
+  .sidebar.open .menu{display:flex}
+  .sidebar.open .logout{display:block;margin-top:0}
+  .menu a{padding:12px}
+  .grid,.row{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .welcome{flex-direction:column;gap:10px}
+  .date{text-align:left}
+  .welcome h1{font-size:22.5px}
+  .task{flex-wrap:wrap;gap:8px}
+  .status{min-width:0;padding:4px 10px}
+  .donut-wrap{flex-direction:column;align-items:flex-start}
+  .card-head{flex-wrap:wrap}
+}
+
+.col-side .card{padding:20px}
+.col-side .card-head{margin-bottom:16px}
+.col-side .card-head h2{font-size:18px}
+.col-side .card-head p{font-size:14px}
+#current-tasks{padding:12px 14px}
+#current-tasks .card-head{margin-bottom:8px}
+
+.student-section{flex-basis:100%;padding-left:2px;font-size:14.5px}
+
+/* Current Tasks: plain white, no border or shadow */
+#current-tasks{background:#fff;box-shadow:none;border:0}
+#current-tasks .task{border:0;background:#fbf4f5}
+/* Task ring on phones: centered, scales with screen width */
+@media(max-width:900px){
+  .donut-wrap{flex-direction:column;align-items:center;gap:18px}
+  .donut{width:min(62vw,210px);height:auto;aspect-ratio:1}
+  .legend{width:100%;max-width:280px;flex:none}
+}
+
+/* Current Tasks: more breathing room */
+#current-tasks .card-head{margin-bottom:14px}
+#current-tasks .task{padding:14px 16px;margin-bottom:12px;gap:14px}
+#current-tasks .task-info{gap:5px}
+#current-tasks .tag{padding:1px 7px;margin-bottom:1px}
+#current-tasks .task-info b{font-size:15px;line-height:1.35}
+#current-tasks .status{font-size:12.5px;padding:4px 12px;min-width:92px}
+
+/* Sidebar: selected item runs to the right edge of the sidebar */
+.menu{margin-right:-12px}
+.menu a.active{border-radius:10px 0 0 10px;box-shadow:none}
+.menu a:hover{border-radius:10px 0 0 10px}
+/* Upcoming Schedule + Recent Announcements: more breathing room */
+#schedule,#announcements{padding:20px}
+#schedule .card-head,#announcements .card-head{margin-bottom:12px}
+.sched,.ann{padding:14px 0;gap:12px}
+.ann div,.sched div:nth-child(2){gap:4px}
+
+.check{line-height:1}.check svg{display:block}
+
+body{display:flex;flex-direction:column}
+
+/* Task ring text: back to the previous font and sizes */
+.donut-center{font-family:"Segoe UI",Arial,sans-serif}
+.donut-center strong{font-size:28px}
+.donut-center small{font-size:12.5px}
+/* Space between the top navigation bar and the welcome banner */
+.content{padding-top:32px}
+@media(max-width:900px){.content{padding-top:20px}}
+
+/* Sidebar picture: sits above Log out and fades into the sidebar color */
+.sidebar::after{bottom:64px;height:230px;opacity:1;mix-blend-mode:multiply;background-size:cover;background-position:center top;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 45%);mask-image:linear-gradient(to bottom,transparent,#000 45%)}
+/* Welcome banner picture: shows on the right side */
+.welcome{background-position:right center}
