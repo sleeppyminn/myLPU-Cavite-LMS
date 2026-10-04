@@ -1,0 +1,6 @@
+/* Page styles for this folder. Edit freely. The header styles live in /header/header.css and are scoped, so they will not clash. */
+body{margin:0;font-family:"Fira Sans","Segoe UI",Arial,sans-serif;color:#2b2c30;background:#fff}
+main{max-width:1000px;margin:0 auto;padding:32px 24px 64px}
+main h1{color:#c8102e;margin:0 0 24px}
+main section{scroll-margin-top:24px;padding:24px 0;border-top:1px solid #eee}
+main section h2{margin:0 0 8px;color:#9b0c23}
