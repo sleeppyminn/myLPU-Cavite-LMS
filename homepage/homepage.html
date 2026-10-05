@@ -32,11 +32,11 @@
   <aside class="sidebar">
     <div class="profile">
       <div class="avatar"><svg class="ic"><use href="#i-person"/></svg></div>
-      <strong class="hello">Jajangmyeon</strong>
+      <strong class="hello" id="user-name"></strong>
       <!-- Mobile only: button that opens/closes the sidebar menu (see setupMobileMenu() in homepage.js) -->
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sidebar-menu">☰ Menu</button>
       <!-- Student section, shown below the profile row -->
-      <small class="student-section">BSIT NS - 202</small>
+      <small class="student-section" id="user-section"></small>
     </div>
     <nav class="menu" id="sidebar-menu">
       <a class="active" href="#"><svg class="ic"><use href="#i-dash"/></svg> Dashboard</a>
@@ -52,7 +52,7 @@
     <!-- SECTION: Welcome banner (greeting + today's date). Filled by renderWelcomeDate() -->
     <section class="welcome">
       <div>
-        <h1>Welcome back, Jajangmyeon!</h1>
+        <h1>Welcome back, <span id="welcome-name"></span>!</h1>
         <p>Here's your academic overview for today.</p>
       </div>
       <div class="date"><strong id="today-date"></strong><small id="today-day"></small></div>
