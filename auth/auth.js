@@ -25,7 +25,7 @@ const AUTH = {
    id      = student number (the part before @lpunetwork.edu.ph)
    name    = name shown on the homepage ("Welcome back, ...!")
    section = shown under the name in the sidebar
-   password (optional) = only if this student should NOT use the default one */
+   password (optional) = only if this student should NOT use tahe default one */
 const ACCOUNTS = [
   { id: "2026-2-00001", name: "Jajangmyeon",    section: "IT202NS" },
   { id: "2026-2-00002", name: "Yaomingsu", section: "IT202NS" },
