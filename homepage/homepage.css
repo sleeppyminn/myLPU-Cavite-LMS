@@ -164,3 +164,13 @@ body{display:flex;flex-direction:column}
 .sidebar::after{bottom:64px;height:230px;opacity:1;mix-blend-mode:multiply;background-size:cover;background-position:center top;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 45%);mask-image:linear-gradient(to bottom,transparent,#000 45%)}
 /* Welcome banner picture: shows on the right side */
 .welcome{background-position:right center}
+
+/* ===== Section anchors (header dropdown + sidebar links) ===== */
+html{scroll-behavior:smooth}
+#profile,#dashboard,#my-courses,#view-tasks,#schedule,#announcements{scroll-margin-top:90px}
+
+/* ===== My Courses ===== */
+#my-courses{background:#fff;padding:20px}
+.course{display:flex;flex-direction:column;gap:4px;background:#fbf4f5;border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.course:last-child{margin-bottom:0}
+.course b{font-size:15px;font-weight:600}
