@@ -8,9 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="homepage.css">
-<!-- Login check: sends visitors who are not logged in to login/login.html -->
-<script src="../auth/auth.js"></script>
-<script>requireLogin();</script>
 </head>
 <body>
 
@@ -26,15 +23,14 @@
 <symbol id="i-out" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></symbol>
 </defs></svg>
 
-<!-- SECTION: Header (logo + top navigation + dropdown). Rendered by ../header/header.js -->
+<!-- SECTION: Header (logo + top navigation). Rendered by ../header/header.js -->
 <div id="site-header"></div>
 
 <div class="layout">
 
-  <!-- SECTION: Sidebar (student profile, menu, log out) -->
+  <!-- STUDENT SIDEBAR -->
   <aside class="sidebar">
-    <!-- id="profile" = target of the "Profile" link in the header dropdown -->
-    <div class="profile" id="profile">
+    <div class="profile">
       <div class="avatar"><svg class="ic"><use href="#i-person"/></svg></div>
       <strong class="hello">Jajangmyeon</strong>
       <!-- Mobile only: button that opens/closes the sidebar menu (see setupMobileMenu() in homepage.js) -->
@@ -43,21 +39,19 @@
       <small class="student-section">BSIT NS - 202</small>
     </div>
     <nav class="menu" id="sidebar-menu">
-      <a href="#profile"><svg class="ic"><use href="#i-person"/></svg> Profile</a>
-      <a class="active" href="#dashboard"><svg class="ic"><use href="#i-dash"/></svg> Dashboard</a>
-      <a href="#my-courses"><svg class="ic"><use href="#i-book"/></svg> My Courses</a>
-      <a href="#view-tasks"><svg class="ic"><use href="#i-tasks"/></svg> View Tasks</a>
-      <a href="#schedule"><svg class="ic"><use href="#i-cal"/></svg> Schedule</a>
-      <a href="#announcements"><svg class="ic"><use href="#i-mega"/></svg> Announcements</a>
+      <a class="active" href="#"><svg class="ic"><use href="#i-dash"/></svg> Dashboard</a>
+      <a href="#"><svg class="ic"><use href="#i-book"/></svg> My Courses</a>
+      <a href="#"><svg class="ic"><use href="#i-tasks"/></svg> View Tasks</a>
+      <a href="#"><svg class="ic"><use href="#i-cal"/></svg> Schedule</a>
+      <a href="#"><svg class="ic"><use href="#i-mega"/></svg> Announcements</a>
       <a href="#"><svg class="ic"><use href="#i-gear"/></svg> Settings</a>
     </nav>
     <a class="logout" href="#"><svg class="ic"><use href="#i-out"/></svg> Log out</a>
   </aside>
 
-  <!-- id="dashboard" = target of the "Dashboard" link in the header dropdown -->
-  <main class="content" id="dashboard">
+  <main class="content">
 
-    <!-- SECTION: Welcome banner (greeting + today's date). Filled by renderWelcomeDate() -->
+    <!-- WELCOME GREETING SECTION -->
     <section class="welcome">
       <div>
         <h1>Welcome back, Jajangmyeon!</h1>
@@ -69,35 +63,25 @@
     <div class="grid">
       <div class="col-main">
 
-        <!-- SECTION: Current Tasks list. id="view-tasks" = target of "View Tasks". Filled by renderCurrentTasks() -->
-        <div id="view-tasks">
-          <section class="card" id="current-tasks">
-            <div class="card-head">
-              <div><h2>Current Tasks</h2><p>Stay on track with your requirements.</p></div>
-              <a href="#view-tasks" class="link">View all tasks →</a>
-            </div>
-            <div id="task-list"></div>
-          </section>
-        </div>
-
-        <!-- SECTION: My Courses (NEW). id="my-courses" = target of "My Courses". Filled by renderMyCourses() -->
-        <section class="card" id="my-courses">
+        <!-- CURRENT TASKS SECTION -->
+        <section class="card" id="current-tasks">
           <div class="card-head">
-            <div><h2>My Courses</h2><p>Your enrolled subjects this term.</p></div>
+            <div><h2>Current Tasks</h2><p>Stay on track with your requirements.</p></div>
+            <a href="#" class="link">View all tasks →</a>
           </div>
-          <div id="course-list"></div>
+          <div id="task-list"></div>
         </section>
 
         <div class="row">
-          <!-- SECTION: Upcoming Schedule. id="schedule" = target of "Schedule". Filled by renderUpcomingSchedule() -->
+          <!-- UPCOMING SCHEDULE SECTION -->
           <section class="card" id="schedule">
-            <div class="card-head small"><span class="icon sm">📅</span><h2>Upcoming Schedule</h2><a href="#schedule" class="link">View full schedule →</a></div>
+            <div class="card-head small"><span class="icon sm">📅</span><h2>Upcoming Schedule</h2><a href="#" class="link">View full schedule →</a></div>
             <div id="schedule-list"></div>
           </section>
 
-          <!-- SECTION: Recent Announcements. Filled by renderRecentAnnouncements() -->
+          <!-- RECENT ANNOUNCEMENTS SECTION -->
           <section class="card" id="announcements">
-            <div class="card-head small"><span class="icon sm">📢</span><h2>Recent Announcements</h2><a href="#announcements" class="link">View all →</a></div>
+            <div class="card-head small"><span class="icon sm">📢</span><h2>Recent Announcements</h2><a href="#" class="link">View all →</a></div>
             <div id="announcement-list"></div>
           </section>
         </div>

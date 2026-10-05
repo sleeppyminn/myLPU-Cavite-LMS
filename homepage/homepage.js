@@ -1,6 +1,6 @@
 /* ===== SETTINGS: welcome banner picture =====
    Put an image path or URL here (e.g. "images/campus.jpg") to set the default banner background. */
-const welcomeBackground = "";
+const welcomeBackground = "images/campus-picture.png";
 
 /* Optional faint building picture at the bottom of the sidebar (e.g. "images/building.png") */
 const sidebarBackground = "images/sidebar-building.png";
@@ -12,12 +12,6 @@ const tasks = [
   { code: "ITEN01C", name: "Activity 1: Web Development", due: "Sep 8, 2026 (Tue)", status: "Completed" },
   { code: "HCI", name: "Design Prototype (Final)", due: "Sep 10, 2026 (Thu)", status: "In Progress" },
   { code: "DCSN03C", name: "Python Project – Module 3", due: "Sep 12, 2026 (Sat)", status: "Pending" },
-];
-/* Course names for ITEN01C and HCI are guesses - edit to match your official names */
-const courses = [
-  { code: "ITEN01C", name: "Web Development" },
-  { code: "HCI", name: "Human-Computer Interaction" },
-  { code: "DCSN03C", name: "Computer Programming 2" }
 ];
 const schedule = [{ month: "SEP", day: 8, title: "ITEN01C - Web Development", time: "8:00 AM - 11:00 AM | Room 302" }];
 const announcements = [
@@ -51,19 +45,6 @@ function renderCurrentTasks() {
         <small>${t.code} • Due: ${t.due}</small></div>
       <span class="status ${cls[t.status]}">${stIcon[t.status]} ${t.status}</span><span>›</span>
     </div>`).join("");
-}
-
-/* ===== SECTION: My Courses ===== */
-function renderMyCourses() {
-  document.getElementById("course-list").innerHTML = courses.map(c => {
-    const open = tasks.filter(t => t.code === c.code && t.status !== "Completed").length;
-    return `
-    <div class="course">
-      <span class="tag">${c.code}</span>
-      <b>${c.name}</b>
-      <small>${open ? open + " task" + (open > 1 ? "s" : "") + " to finish" : "All tasks done"}</small>
-    </div>`;
-  }).join("");
 }
 
 /* ===== SECTION: Upcoming Schedule ===== */
@@ -101,11 +82,41 @@ function renderAcademicProgress() {
 
 /* ===== SECTION: Welcome banner – background picture (set via welcomeBackground above) ===== */
 function setWelcomeImage(url) {
-  document.querySelector(".welcome").style.setProperty("--welcome-img", url ? `url("${url}")` : "none");
+  const wash = "linear-gradient(90deg, rgba(248,234,237,.78) 0%, rgba(248,234,237,.4) 45%, rgba(248,234,237,.05) 100%)";
+  const banner = document.querySelector(".welcome");
+  banner.style.backgroundImage = `${wash}, url("${url}")`;
+  banner.style.backgroundSize = "cover";
+  banner.style.backgroundPosition = "center 40%";
+  // Helps debugging: shows a message in the browser console (F12) if the file can't be found
+  const test = new Image();
+  test.onerror = () => console.warn("Banner picture not found: " + url + " (check the images folder and file name)");
+  test.src = url;
 }
 function setupWelcomeBackground() {
   if (welcomeBackground) setWelcomeImage(welcomeBackground);
 }
+
+/* ===== SECTION: Sidebar – mobile menu toggle (hamburger button) ===== */
+function setupMobileMenu() {
+  if (sidebarBackground) document.querySelector(".sidebar").style.setProperty("--sidebar-img", `url("${sidebarBackground}")`);
+  const btn = document.getElementById("menu-toggle");
+  const sidebar = document.querySelector(".sidebar");
+  btn.addEventListener("click", () => {
+    const open = sidebar.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
+    btn.textContent = open ? "✕ Close" : "☰ Menu";
+  });
+}
+
+/* ===== INIT ===== */
+setupMobileMenu();
+setupWelcomeBackground();
+renderWelcomeDate();
+renderCurrentTasks();
+renderUpcomingSchedule();
+renderRecentAnnouncements();
+renderGeneralTasks();
+renderAcademicProgress();
 
 /* ===== SECTION: Sidebar – mobile menu toggle (hamburger button) ===== */
 function setupMobileMenu() {
