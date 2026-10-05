@@ -13,12 +13,6 @@ const tasks = [
   { code: "HCI", name: "Design Prototype (Final)", due: "Sep 10, 2026 (Thu)", status: "In Progress" },
   { code: "DCSN03C", name: "Python Project – Module 3", due: "Sep 12, 2026 (Sat)", status: "Pending" },
 ];
-/* Course names for ITEN01C and HCI are guesses - edit to match your official names */
-const courses = [
-  { code: "ITEN01C", name: "Web Development" },
-  { code: "HCI", name: "Human-Computer Interaction" },
-  { code: "DCSN03C", name: "Computer Programming 2" }
-];
 const schedule = [{ month: "SEP", day: 8, title: "ITEN01C - Web Development", time: "8:00 AM - 11:00 AM | Room 302" }];
 const announcements = [
   { title: "Class Suspension on Sept. 10, 2026", text: "Due to the university event, all classes will be...", date: "Sep 6, 2026" },
@@ -51,19 +45,6 @@ function renderCurrentTasks() {
         <small>${t.code} • Due: ${t.due}</small></div>
       <span class="status ${cls[t.status]}">${stIcon[t.status]} ${t.status}</span><span>›</span>
     </div>`).join("");
-}
-
-/* ===== SECTION: My Courses ===== */
-function renderMyCourses() {
-  document.getElementById("course-list").innerHTML = courses.map(c => {
-    const open = tasks.filter(t => t.code === c.code && t.status !== "Completed").length;
-    return `
-    <div class="course">
-      <span class="tag">${c.code}</span>
-      <b>${c.name}</b>
-      <small>${open ? open + " task" + (open > 1 ? "s" : "") + " to finish" : "All tasks done"}</small>
-    </div>`;
-  }).join("");
 }
 
 /* ===== SECTION: Upcoming Schedule ===== */
@@ -127,38 +108,12 @@ function setupMobileMenu() {
   });
 }
 
-/* ===== SECTION: Sidebar / header dropdown links jump to sections =====
-   Works with links like #profile, #dashboard, #my-courses, #view-tasks, #schedule */
-function setupSectionLinks() {
-  const links = [...document.querySelectorAll('.menu a[href^="#"]')];
-  const sidebar = document.querySelector(".sidebar");
-  const menuBtn = document.getElementById("menu-toggle");
-
-  function sync() {
-    const id = location.hash.slice(1);
-    if (!id) return;
-    links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-    const target = document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  links.forEach(a => a.addEventListener("click", () => {
-    sidebar.classList.remove("open");           // close the mobile menu after tapping
-    menuBtn.setAttribute("aria-expanded", false);
-    menuBtn.textContent = "☰ Menu";
-  }));
-  window.addEventListener("hashchange", sync);
-  sync();                                       // handles opening homepage.html#schedule directly
-}
-
 /* ===== INIT ===== */
 setupMobileMenu();
 setupWelcomeBackground();
 renderWelcomeDate();
 renderCurrentTasks();
-renderMyCourses();
 renderUpcomingSchedule();
 renderRecentAnnouncements();
 renderGeneralTasks();
 renderAcademicProgress();
-setupSectionLinks();
