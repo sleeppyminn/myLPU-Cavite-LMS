@@ -25,6 +25,26 @@ const academic = [
   { label: "Tasks Completed", value: "6/10", pct: 60 }
 ];
 
+/* ===== SECTION: Logged-in student – greeting, sidebar name and section (accounts live in ../auth/auth.js) ===== */
+function renderUser() {
+  const user = requireLogin();            // not logged in? sends the visitor to login.html
+  if (!user) return;
+  document.getElementById("welcome-title").textContent = `Welcome back, ${user.name}!`;
+  document.getElementById("user-name").textContent = user.name;
+  document.getElementById("user-section").textContent = user.section;
+  document.title = `${user.name} | Home Page | LPU Cavite LMS`;
+}
+
+/* ===== SECTION: Log out button – clears the saved session first ===== */
+function setupLogout() {
+  const link = document.getElementById("logout-link");
+  if (!link) return;
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    logout();                             // from auth.js: removes the session, then opens login.html
+  });
+}
+
 /* ===== SECTION: Welcome banner – today's date ===== */
 function renderWelcomeDate() {
   document.getElementById("today-date").textContent =
@@ -109,6 +129,8 @@ function setupMobileMenu() {
 }
 
 /* ===== INIT ===== */
+renderUser();
+setupLogout();
 setupMobileMenu();
 setupWelcomeBackground();
 renderWelcomeDate();
