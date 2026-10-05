@@ -28,8 +28,8 @@ const AUTH = {
    password (optional) = only if this student should NOT use the default one */
 const ACCOUNTS = [
   { id: "2026-2-00001", name: "Jajangmyeon",    section: "IT202NS" },
-  { id: "2026-2-00002", name: "Sample Student", section: "IT202NS" },
-  { id: "2026-2-00003", name: "Sample Student 2", section: "IT202NS" }
+  { id: "2026-2-00002", name: "Yaomingsu", section: "IT202NS" },
+  { id: "2026-2-00003", name: "kebinkilino", section: "IT202NS" }
 ];
 
 function accountEmail(a) { return a.id + AUTH.DOMAIN; }
