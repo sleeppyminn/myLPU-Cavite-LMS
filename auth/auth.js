@@ -29,6 +29,7 @@ const AUTH = {
 const ACCOUNTS = [
   { id: "2026-2-00001", name: "Jajangmyeon",    section: "IT202NS" },
   { id: "2026-2-00002", name: "Yaomingsu", section: "IT202NS" },
+  { id: "2026-2-00002", name: "landirmakatu", section: "IT202NS" },
   { id: "2026-2-00003", name: "kebinkilino", section: "IT202NS" }
 ];
 
