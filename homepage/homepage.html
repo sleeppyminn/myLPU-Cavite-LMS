@@ -28,7 +28,7 @@
 
 <div class="layout">
 
-  <!-- SECTION: Sidebar (student profile, menu, log out) -->
+  <!-- STUDENT SIDEBAR -->
   <aside class="sidebar">
     <!-- id="profile" = target of the "Profile" link in the header dropdown -->
     <div class="profile" id="profile">
@@ -54,7 +54,7 @@
   <!-- id="dashboard" = target of the "Dashboard" link in the header dropdown -->
   <main class="content" id="dashboard">
 
-    <!-- SECTION: Welcome banner (greeting + today's date). Filled by renderWelcomeDate() -->
+    <!-- WELCOME GREETING SECTION -->
     <section class="welcome">
       <div>
         <h1>Welcome back, Jajangmyeon!</h1>
@@ -66,19 +66,8 @@
     <div class="grid">
       <div class="col-main">
 
-        <!-- SECTION: Current Tasks list. id="view-tasks" = target of "View Tasks". Filled by renderCurrentTasks() -->
-        <div id="view-tasks">
-          <section class="card" id="current-tasks">
-            <div class="card-head">
-              <div><h2>Current Tasks</h2><p>Stay on track with your requirements.</p></div>
-              <a href="#view-tasks" class="link">View all tasks →</a>
-            </div>
-            <div id="task-list"></div>
-          </section>
-        </div>
-
-        <!-- SECTION: My Courses (NEW). id="my-courses" = target of "My Courses". Filled by renderMyCourses() -->
-        <section class="card" id="my-courses">
+        <!-- CURRENT TASKS SECTION -->
+        <section class="card" id="current-tasks">
           <div class="card-head">
             <div><h2>My Courses</h2><p>Your enrolled subjects this term.</p></div>
           </div>
@@ -86,13 +75,13 @@
         </section>
 
         <div class="row">
-          <!-- SECTION: Upcoming Schedule. id="schedule" = target of "Schedule". Filled by renderUpcomingSchedule() -->
+          <!-- UPCOMING SCHEDULE SECTION -->
           <section class="card" id="schedule">
             <div class="card-head small"><span class="icon sm">📅</span><h2>Upcoming Schedule</h2><a href="#schedule" class="link">View full schedule →</a></div>
             <div id="schedule-list"></div>
           </section>
 
-          <!-- SECTION: Recent Announcements. Filled by renderRecentAnnouncements() -->
+          <!-- RECENT ANNOUNCEMENTS SECTION -->
           <section class="card" id="announcements">
             <div class="card-head small"><span class="icon sm">📢</span><h2>Recent Announcements</h2><a href="#announcements" class="link">View all →</a></div>
             <div id="announcement-list"></div>

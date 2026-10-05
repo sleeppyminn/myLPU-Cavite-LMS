@@ -1,9 +1,9 @@
 /* ===== SETTINGS: welcome banner picture =====
    Put an image path or URL here (e.g. "images/campus.jpg") to set the default banner background. */
-const welcomeBackground = "";
+const welcomeBackground = "images/campus-picture.png";
 
 /* Optional faint building picture at the bottom of the sidebar (e.g. "images/building.png") */
-const sidebarBackground = "images/sidebar-building.png";
+const sidebarBackground = "images/campus-picture.png";
 
 /* ===== DATA ===== */
 const today = new Date(2026, 8, 7); // Sept 7, 2026
@@ -101,7 +101,15 @@ function renderAcademicProgress() {
 
 /* ===== SECTION: Welcome banner – background picture (set via welcomeBackground above) ===== */
 function setWelcomeImage(url) {
-  document.querySelector(".welcome").style.setProperty("--welcome-img", url ? `url("${url}")` : "none");
+  const wash = "linear-gradient(90deg, rgba(248,234,237,.78) 0%, rgba(248,234,237,.4) 45%, rgba(248,234,237,.05) 100%)";
+  const banner = document.querySelector(".welcome");
+  banner.style.backgroundImage = `${wash}, url("${url}")`;
+  banner.style.backgroundSize = "cover";
+  banner.style.backgroundPosition = "center 40%";
+  // Helps debugging: shows a message in the browser console (F12) if the file can't be found
+  const test = new Image();
+  test.onerror = () => console.warn("Banner picture not found: " + url + " (check the images folder and file name)");
+  test.src = url;
 }
 function setupWelcomeBackground() {
   if (welcomeBackground) setWelcomeImage(welcomeBackground);
