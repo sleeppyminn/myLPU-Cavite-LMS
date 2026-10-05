@@ -28,33 +28,31 @@
 
 <div class="layout">
 
-  <!-- STUDENT SIDEBAR -->
+  <!-- SECTION: Sidebar (student profile, menu, log out) -->
   <aside class="sidebar">
     <div class="profile">
       <div class="avatar"><svg class="ic"><use href="#i-person"/></svg></div>
-      <strong class="hello">Jajangmyeon</strong>
+      <strong class="hello">Jaja</strong>
       <!-- Mobile only: button that opens/closes the sidebar menu (see setupMobileMenu() in homepage.js) -->
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sidebar-menu">☰ Menu</button>
       <!-- Student section, shown below the profile row -->
-      <small class="student-section">BSIT NS - 202</small>
+      <small class="student-section">BSIT 1A</small>
     </div>
     <nav class="menu" id="sidebar-menu">
       <a class="active" href="#"><svg class="ic"><use href="#i-dash"/></svg> Dashboard</a>
       <a href="#"><svg class="ic"><use href="#i-book"/></svg> My Courses</a>
       <a href="#"><svg class="ic"><use href="#i-tasks"/></svg> View Tasks</a>
       <a href="#"><svg class="ic"><use href="#i-cal"/></svg> Schedule</a>
-      <a href="#"><svg class="ic"><use href="#i-mega"/></svg> Announcements</a>
-      <a href="#"><svg class="ic"><use href="#i-gear"/></svg> Settings</a>
     </nav>
     <a class="logout" href="#"><svg class="ic"><use href="#i-out"/></svg> Log out</a>
   </aside>
 
   <main class="content">
 
-    <!-- WELCOME GREETING SECTION -->
+    <!-- SECTION: Welcome banner (greeting + today's date). Filled by renderWelcomeDate() -->
     <section class="welcome">
       <div>
-        <h1>Welcome back, Jajangmyeon!</h1>
+        <h1>Welcome back, Sophia!</h1>
         <p>Here's your academic overview for today.</p>
       </div>
       <div class="date"><strong id="today-date"></strong><small id="today-day"></small></div>
@@ -63,7 +61,7 @@
     <div class="grid">
       <div class="col-main">
 
-        <!-- CURRENT TASKS SECTION -->
+        <!-- SECTION: Current Tasks list. Filled by renderCurrentTasks() -->
         <section class="card" id="current-tasks">
           <div class="card-head">
             <div><h2>Current Tasks</h2><p>Stay on track with your requirements.</p></div>
@@ -73,13 +71,13 @@
         </section>
 
         <div class="row">
-          <!-- UPCOMING SCHEDULE SECTION -->
+          <!-- SECTION: Upcoming Schedule. Filled by renderUpcomingSchedule() -->
           <section class="card" id="schedule">
             <div class="card-head small"><span class="icon sm">📅</span><h2>Upcoming Schedule</h2><a href="#" class="link">View full schedule →</a></div>
             <div id="schedule-list"></div>
           </section>
 
-          <!-- RECENT ANNOUNCEMENTS SECTION -->
+          <!-- SECTION: Recent Announcements. Filled by renderRecentAnnouncements() -->
           <section class="card" id="announcements">
             <div class="card-head small"><span class="icon sm">📢</span><h2>Recent Announcements</h2><a href="#" class="link">View all →</a></div>
             <div id="announcement-list"></div>

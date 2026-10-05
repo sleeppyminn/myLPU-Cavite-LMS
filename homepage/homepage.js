@@ -3,7 +3,7 @@
 const welcomeBackground = "images/campus-picture.png";
 
 /* Optional faint building picture at the bottom of the sidebar (e.g. "images/building.png") */
-const sidebarBackground = "images/sidebar-building.png";
+const sidebarBackground = "images/campus-picture.png";
 
 /* ===== DATA ===== */
 const today = new Date(2026, 8, 7); // Sept 7, 2026
@@ -117,71 +117,3 @@ renderUpcomingSchedule();
 renderRecentAnnouncements();
 renderGeneralTasks();
 renderAcademicProgress();
-
-/* ===== SECTION: Sidebar – mobile menu toggle (hamburger button) ===== */
-function setupMobileMenu() {
-  if (sidebarBackground) document.querySelector(".sidebar").style.setProperty("--sidebar-img", `url("${sidebarBackground}")`);
-  const btn = document.getElementById("menu-toggle");
-  const sidebar = document.querySelector(".sidebar");
-  btn.addEventListener("click", () => {
-    const open = sidebar.classList.toggle("open");
-    btn.setAttribute("aria-expanded", open);
-    btn.textContent = open ? "✕ Close" : "☰ Menu";
-  });
-}
-
-/* ===== SECTION: Sidebar / header dropdown links jump to sections =====
-   Works with links like #profile, #dashboard, #my-courses, #view-tasks, #schedule */
-function setupSectionLinks() {
-  const links = [...document.querySelectorAll('.menu a[href^="#"]')];
-  const sidebar = document.querySelector(".sidebar");
-  const menuBtn = document.getElementById("menu-toggle");
-
-  function sync() {
-    const id = location.hash.slice(1);
-    if (!id) return;
-    links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-    const target = document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  links.forEach(a => a.addEventListener("click", () => {
-    sidebar.classList.remove("open");           // close the mobile menu after tapping
-    menuBtn.setAttribute("aria-expanded", false);
-    menuBtn.textContent = "☰ Menu";
-  }));
-  window.addEventListener("hashchange", sync);
-  sync();                                       // handles opening homepage.html#schedule directly
-}
-
-/* ===== SECTION: Logged-in user (name, section, welcome text) ===== */
-function renderUser() {
-  const u = currentUser();
-  if (!u) return;
-  document.querySelector(".hello").textContent = u.name;
-  document.querySelector(".student-section").textContent = u.section;
-  document.querySelector(".welcome h1").textContent = `Welcome back, ${u.name}!`;
-}
-
-/* ===== SECTION: Log out (fade out, then back to login) ===== */
-function setupLogout() {
-  document.querySelector(".logout").addEventListener("click", e => {
-    e.preventDefault();
-    document.body.classList.add("leaving");
-    setTimeout(logout, 450);
-  });
-}
-
-/* ===== INIT ===== */
-setupMobileMenu();
-setupWelcomeBackground();
-renderWelcomeDate();
-renderCurrentTasks();
-renderMyCourses();
-renderUpcomingSchedule();
-renderRecentAnnouncements();
-renderGeneralTasks();
-renderAcademicProgress();
-setupSectionLinks();
-renderUser();
-setupLogout();
