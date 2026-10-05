@@ -1,20 +1,23 @@
-/* LPU Cavite shared header  (version 4)
+/* LPU Cavite shared header  (version 8)
    Usage on ANY page:  <script src="../header/header.js"></script>   (path relative to that page)
    Everything is built here, so there is no header.html to go missing.
    To change the menu, edit the MENUS lists below. */
 (function () {
-  var VERSION = 4;
+  var VERSION = 8;
 
   /* ---------- MENU: edit here (label, then [text, path-from-site-root]) ---------- */
   var LEFT = [
     { label: 'Home Page', items: [
-      ['Task Progress',       'homepage/homepage.html#progress'],
-      ['Announcements',       'homepage/homepage.html#announcements'],
-      ['School Certificates', 'homepage/homepage.html#certificates'] ] },
+      ['Profile',    'homepage/homepage.html#profile'],
+      ['Dashboard',  'homepage/homepage.html#dashboard'],
+      ['My Courses', 'homepage/homepage.html#my-courses'],
+      ['View Tasks', 'homepage/homepage.html#view-tasks'],
+      ['Schedule',   'homepage/homepage.html#schedule'] ] },
     { label: 'About', items: [
       ['What is an LMS?', 'about/about.html#lms'],
       ['About LPU',       'about/about.html#about-lpu'],
-      ['Stakeholders',    'about/about.html#stakeholders'] ] },
+      ['Stakeholders',    'about/about.html#stakeholders'],
+      ['School Certificates', 'about/about.html#certificates'] ] },
     { label: 'Services', items: [
       ['Library Services',             'services/services.html#library'],
       ['Admission Steps & Enrollment', 'services/services.html#admission'],
@@ -68,12 +71,15 @@
       '<header class="site-header" id="siteHeader" data-version="' + VERSION + '">' +
         '<a class="brand" href="' + root + 'homepage/homepage.html" title="Lyceum of the Philippines University Cavite" aria-label="LPU Cavite home">' +
           '<img class="brand-logo" src="' + root + 'assets/lpu-logo.png" alt="Lyceum of the Philippines University Cavite">' +
+          '<img class="brand-logo-mobile" src="' + root + 'assets/lpu-logo-mobile.png" alt="Lyceum of the Philippines University Cavite">' +
         '</a>' +
         '<button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteHeader">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>' +
         '</button>' +
+        '<a class="search-mobile" href="#" aria-label="Search">' + SEARCH + '</a>' +
         '<nav class="utility" aria-hidden="true"><div class="row"><span></span><span></span><span></span></div></nav>' +
         '<nav class="mainbar" aria-label="Main">' +
+          '<span class="mainbar-bg" aria-hidden="true"></span>' +
           '<div class="row">' +
             '<ul>' + left + '</ul>' +
             '<span></span>' +
