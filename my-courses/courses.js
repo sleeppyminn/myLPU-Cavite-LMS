@@ -58,7 +58,27 @@ function setupMobileMenu() {
   });
 }
 
+/* ===== SECTION: Logged-in student – sidebar name and section (accounts live in ../auth/auth.js) ===== */
+function renderUser() {
+  if (typeof requireLogin !== "function") return;   // auth.js not loaded on this page
+  const user = requireLogin();                      // not logged in? sends the visitor to login.html
+  if (!user) return;
+  const name = document.getElementById("user-name");
+  const section = document.getElementById("user-section");
+  if (name) name.textContent = user.name;
+  if (section) section.textContent = user.section;
+}
+
+/* ===== SECTION: Log out button – clears the saved session first ===== */
+function setupLogout() {
+  const link = document.getElementById("logout-link");
+  if (!link || typeof logout !== "function") return;
+  link.addEventListener("click", e => { e.preventDefault(); logout(); });
+}
+
 /* ===== INIT ===== */
+renderUser();
+setupLogout();
 if (document.getElementById("course-grid")) {   // only on the My Courses page (subject.html reuses this file's data)
   renderCourses();
   setupSearch();

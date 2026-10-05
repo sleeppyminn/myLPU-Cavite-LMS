@@ -31,10 +31,10 @@
   <aside class="sidebar">
     <div class="profile">
       <div class="avatar"><svg class="ic"><use href="#i-person"/></svg></div>
-      <strong class="hello">Jajangmyeon</strong>
+      <strong class="hello" id="user-name"></strong>
       <!-- Mobile only: opens/closes the sidebar menu (see setupMobileMenu() in courses.js) -->
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sidebar-menu">☰ Menu</button>
-      <small class="student-section">BSIT NS - 202</small>
+      <small class="student-section" id="user-section"></small>
     </div>
     <nav class="menu" id="sidebar-menu">
       <a href="../homepage/homepage.html"><svg class="ic"><use href="#i-dash"/></svg> Dashboard</a>
@@ -42,7 +42,7 @@
       <a href="#"><svg class="ic"><use href="#i-tasks"/></svg> View Tasks</a>
       <a href="#"><svg class="ic"><use href="#i-cal"/></svg> Schedule</a>
     </nav>
-    <a class="logout" href="../login/login.html"><svg class="ic"><use href="#i-out"/></svg> Log out</a>
+    <a class="logout" href="../login/login.html" id="logout-link"><svg class="ic"><use href="#i-out"/></svg> Log out</a>
   </aside>
 
   <main class="content">
@@ -64,6 +64,7 @@
 
 <!-- Same header file as the homepage. If the header is missing, open the console (F12): this path must point to your header folder -->
 <script src="../header/header.js" onerror="console.warn('Header not found: check that the header folder is next to the courses folder (path ../header/header.js)')"></script>
+<script src="../auth/auth.js"></script>
 <script src="courses.js"></script>
 </body>
 </html>
