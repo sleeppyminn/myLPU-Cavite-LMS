@@ -3,7 +3,7 @@
    Everything is built here, so there is no header.html to go missing.
    To change the menu, edit the MENUS lists below. */
 (function () {
-  var VERSION = 9;
+  var VERSION = 10;
 
   /* ---------- MENU: edit here (label, then [text, path-from-site-root]) ---------- */
   var LEFT = [
@@ -31,8 +31,11 @@
       ['Latest News',              'announcements/announcements.html#news'],
       ['Class Dept Announcements', 'announcements/announcements.html#class-dept'] ] },
     { label: 'Contacts', items: [
-      ['Registrar',    'contacts/contacts.html#registrar'],
-      ['IT Helpdesk',  'contacts/contacts.html#it-helpdesk'] ] }
+      ['Registrar',              'contacts/contacts.html#registrar'],
+      ['Admission Office',       'contacts/contacts.html#admission'],
+      ['Guidance and Counseling','contacts/contacts.html#guidance'],
+      ['Accounting',             'contacts/contacts.html#accounting'],
+      ['ICTD',                   'contacts/contacts.html#ictd'] ] }
   ];
   /* ---------- SEARCH: edit here ----------
      The search looks through every menu item above, plus these extra entries and courses.
