@@ -131,5 +131,26 @@ $("mini-grid").onclick = e => { const b = e.target.closest(".d"); if (b) { const
 function toggleTask(li) { if (!li) return; TASKS[li.dataset.i].done = !TASKS[li.dataset.i].done; renderLists(); }
 $("task-checks").onclick = e => toggleTask(e.target.closest("li"));
 $("task-checks").onkeydown = e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); toggleTask(e.target.closest("li")); } };
+/* ===== SECTION: Sidebar – student name, section, log out and mobile menu (same as the other pages) ===== */
+function renderUser() {
+  const user = typeof requireLogin === "function" ? requireLogin() : null;
+  if (!user) return;
+  $("user-name").textContent = user.name;
+  $("user-section").textContent = user.section;
+  document.title = `Schedule | ${user.name} | LPU Cavite LMS`;
+}
+function setupLogout() {
+  const link = $("logout-link");
+  if (link) link.addEventListener("click", e => { e.preventDefault(); logout(); });
+}
+function setupMobileMenu() {
+  const btn = $("menu-toggle"), sidebar = document.querySelector(".sidebar");
+  btn.addEventListener("click", () => {
+    const open = sidebar.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
+    btn.textContent = open ? "\u2715 Close" : "\u2630 Menu";
+  });
+}
 if (window.matchMedia("(max-width:560px)").matches) state.view = "daily";   // phones start on the day view
+renderUser(); setupLogout(); setupMobileMenu();
 renderLists(); render();
