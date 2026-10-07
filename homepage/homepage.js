@@ -8,22 +8,44 @@ const sidebarBackground = "images/campus-picture.png";
 /* ===== DATA ===== */
 const today = new Date(2026, 8, 7); // Sept 7, 2026
 
+/* A task with an  href  is clickable and opens that page (the In Progress one opens the HCI submission bin) */
 const tasks = [
-  { code: "ITEN01C", name: "Activity 1: Web Development", due: "Sep 8, 2026 (Tue)", status: "Completed" },
-  { code: "HCI", name: "Design Prototype (Final)", due: "Sep 10, 2026 (Thu)", status: "In Progress" },
-  { code: "DCSN03C", name: "Python Project – Module 3", due: "Sep 12, 2026 (Sat)", status: "Pending" },
+  { code: "ITEN01C", subject: "Introduction to Human-Computer Interaction", name: "Activity 1: Web Development", due: "Sep 8, 2026 (Tue)", status: "Completed", href: "../my-courses/subjects/submission%20bin/web-dev-activity.html" },
+  { code: "ITEN01C", subject: "Introduction to Human-Computer Interaction", name: "Design Prototype (Final)", due: "Sep 10, 2026 (Thu)", status: "In Progress", href: "../my-courses/subjects/submission%20bin/hci-activity.html" },
+  { code: "CSCN02C", subject: "Object-Oriented Programming", name: "Python Project – Module 3", due: "Sep 12, 2026 (Sat)", status: "Pending", href: "../my-courses/subjects/submission%20bin/oop-activity.html" },
 ];
 const schedule = [{ month: "SEP", day: 8, title: "ITEN01C - Web Development", time: "8:00 AM - 11:00 AM | Room 302" }];
 const announcements = [
   { title: "Class Suspension on Sept. 10, 2026", text: "Due to the university event, all classes will be...", date: "Sep 6, 2026" },
   { title: "Deadline Extension for HCI Activity", text: "", date: "" }
 ];
-const general = { completed: 6, pending: 4 };
+const general = { completed: 1, pending: 2, percent: 40 };   // percent: ring + center number. Delete "percent" to calculate it from completed/total (1 of 3 = 33%)
 const academic = [
   { label: "Attendance", value: "92%", pct: 92 },
-  { label: "GPA", value: "1.75", pct: 55 },
-  { label: "Tasks Completed", value: "6/10", pct: 60 }
+  { label: "Tasks Completed", value: "1/3", pct: 33 }
 ];
+
+/* ===== SECTION: Statuses saved by the View Tasks page (same key as tasks.js) =====
+   When the student changes a status there, it is saved in this browser and read here,
+   so the Current Tasks list, the General Tasks ring and the Tasks Completed bar all follow it. */
+const STATUS_KEY = "lms-task-status";
+const STATUS_ORDER = ["Completed", "In Progress", "Pending"];
+function loadStatuses() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STATUS_KEY) || "null");
+    if (!saved) return;                                   // nothing changed yet: keep the default numbers above
+    tasks.forEach(t => { if (STATUS_ORDER.includes(saved[t.name])) t.status = saved[t.name]; });
+    const completed = tasks.filter(t => t.status === "Completed").length;
+    const total = tasks.length;
+    general.completed = completed;
+    general.pending = total - completed;
+    general.percent = Math.round((completed / total) * 100);
+    const bar = academic.find(a => a.label === "Tasks Completed");
+    if (bar) { bar.value = `${completed}/${total}`; bar.pct = general.percent; }
+  } catch (e) { /* storage blocked: keep the defaults */ }
+}
+/* Coming back with the browser's Back button: reload so the newest statuses show */
+window.addEventListener("pageshow", e => { if (e.persisted) location.reload(); });
 
 /* ===== SECTION: Logged-in student – greeting, sidebar name and section (accounts live in ../auth/auth.js) ===== */
 function renderUser() {
@@ -59,12 +81,12 @@ function renderCurrentTasks() {
   const mark = { "Completed": ["done", '<svg viewBox="0 0 12 12" width="11" height="11"><polyline points="2.2,6.3 4.9,9 9.8,3.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>'], "In Progress": ["progress", "◔"], "Pending": ["", ""] };
   const stIcon = { "Completed": "✔", "In Progress": "◔", "Pending": "⊖" };
   document.getElementById("task-list").innerHTML = tasks.map(t => `
-    <div class="task">
+    <${t.href ? `a href="${t.href}"` : "div"} class="task${t.href ? " clickable" : ""}">
       <div class="check ${mark[t.status][0]}">${mark[t.status][1]}</div>
       <div class="task-info"><span class="tag">${t.code}</span><b>${t.name}</b>
-        <small>${t.code} • Due: ${t.due}</small></div>
+        <small>${t.subject} • Due: ${t.due}</small></div>
       <span class="status ${cls[t.status]}">${stIcon[t.status]} ${t.status}</span><span>›</span>
-    </div>`).join("");
+    </${t.href ? "a" : "div"}>`).join("");
 }
 
 /* ===== SECTION: Upcoming Schedule ===== */
@@ -83,7 +105,7 @@ function renderRecentAnnouncements() {
 /* ===== SECTION: General Tasks – donut chart and legend ===== */
 function renderGeneralTasks() {
   const total = general.completed + general.pending;
-  const pct = Math.round((general.completed / total) * 100);
+  const pct = general.percent ?? Math.round((general.completed / total) * 100);
   document.getElementById("donut").style.background =
     `conic-gradient(var(--red) 0 ${pct}%, #d9d0d2 ${pct}% 100%)`;
   document.getElementById("donut-pct").textContent = pct + "%";
@@ -134,6 +156,7 @@ setupLogout();
 setupMobileMenu();
 setupWelcomeBackground();
 renderWelcomeDate();
+loadStatuses();
 renderCurrentTasks();
 renderUpcomingSchedule();
 renderRecentAnnouncements();

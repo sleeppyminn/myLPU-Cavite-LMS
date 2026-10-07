@@ -63,7 +63,8 @@ small{color:var(--mute);font-size:14px}
 .ann{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f3e6e8;font-size:14px}
 .ann::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:5px;flex:none}
 .ann div{flex:1;display:flex;flex-direction:column}
-.ann small:last-child{white-space:nowrap}
+.ann>div{min-width:0}
+.ann>small:last-child{white-space:nowrap;flex:none}   /* date stays on one line inside the card; the text beside it wraps instead */
 /* Donut */
 .donut-wrap{display:flex;align-items:center;gap:26px;padding:6px 4px 4px}
 .donut{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;flex:none}
@@ -201,3 +202,9 @@ body{display:flex;flex-direction:column}
 
 /* Sidebar picture: built into the CSS so it shows even if the JS setting is missing or outdated */
 .sidebar::after{background-image:var(--sidebar-img,none),url("images/campus-picture.png")}
+
+/* Clickable task: the In Progress one opens its activity page */
+a.task{color:inherit;text-decoration:none}
+#current-tasks .task.clickable{cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s}
+#current-tasks .task.clickable:hover{background:#f6e6e9;transform:translateY(-1px);box-shadow:0 3px 10px rgba(140,11,37,.12)}
+#current-tasks .task.clickable:focus-visible{outline:2px solid var(--red);outline-offset:2px}
