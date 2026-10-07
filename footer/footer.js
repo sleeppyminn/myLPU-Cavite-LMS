@@ -2,7 +2,7 @@
    Usage on ANY page, after the header script:  <script src="../footer/footer.js"></script>
    Everything is built here, like header.js. To change links or contact details, edit the lists below. */
 (function () {
-  var VERSION = 1;
+  var VERSION = 2;
   var COLS = [   // [column title, [[text, path-from-site-root], ...]]
     ['Explore', [['Home Page', 'homepage/homepage.html'], ['My Courses', 'my-courses/courses.html'], ['Schedule', 'schedule/schedule.html'], ['About', 'about/about.html']]],
     ['Support', [['Services', 'services/services.html'], ['Announcements', 'announcements/announcements.html'], ['Contacts', 'contacts/contacts.html'], ['IT Support', 'services/services.html#it-support']]]

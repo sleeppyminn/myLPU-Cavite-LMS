@@ -2,6 +2,9 @@
 #site-footer{margin-top:auto}
 .site-footer{--red:#c8102e;--red-dark:#9b0c23;--gold:#d9a826;--tint:#fbecee;--white:#fff;
   font-family:"Fira Sans","Segoe UI",Arial,sans-serif;color:var(--white);margin-top:40px}
+/* Pages with a sidebar (.layout): the sidebar runs flush into the footer, so drop the footer's top gap on desktop.
+   On tablet/phone the sidebar is a top bar, so the normal gap stays. */
+@media (min-width:901px){.layout ~ #site-footer .site-footer{margin-top:0}}
 .site-footer,.site-footer *{box-sizing:border-box}
 .site-footer ul{list-style:none;margin:0;padding:0}
 .site-footer a{color:inherit;text-decoration:none}
