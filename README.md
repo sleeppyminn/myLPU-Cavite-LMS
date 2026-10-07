@@ -31,9 +31,10 @@ There is no sign-up. Accounts are provided, like in a real school LMS.
 |------|--------|-------------|
 | Login | `login/` | Login form with a video background and an opening animation |
 | Home Page | `homepage/` | Profile, Dashboard, My Courses, View Tasks, Schedule, and Announcements |
+| View Tasks | `homepage/view tasks/` | List of tasks with due date, priority, and status |
 | Schedule | `schedule/` | Weekly class grid, deadlines, tasks and school calendar |
 | Footer | `footer/` | Shared footer (Explore, Support, Contact) added to the main pages |
-| My Courses | `my-courses/` | List of enrolled courses |
+| My Courses | `my-courses/` | List of enrolled courses, a page for each subject, and activity pages for submitting work |
 | About | `about/` | What is an LMS, About LPU, History, Mission and Vision, Stakeholders, School Certificates |
 | Services | `services/` | Library Services, Admission Steps & Enrollment, IT Support, Registrar Office |
 | Announcements | `announcements/` | Upcoming Events, LPU Articles, Latest News, Class Dept Announcements |
@@ -42,20 +43,105 @@ There is no sign-up. Accounts are provided, like in a real school LMS.
 ## Project structure
 
 ```
-index.html        redirects to the login page
-auth/             login system and the list of provided accounts
-header/           shared header: dropdown menus and search (header.js, header.css)
-login/            login page
-homepage/         home page after logging in
-my-courses/       courses page
-about/            about pages
-services/         services pages
-announcements/    announcements page
-contacts/         contacts page
-assets/           logos, login background video, and poster image
+myLPU-Cavite-LMS/
+├── about/
+│   ├── about.css
+│   ├── about.html                 about pages
+│   ├── about.js
+│   ├── dpo.jpg
+│   └── npc_cert.png
+├── announcements/
+│   ├── announcements.css
+│   ├── announcements.html         announcements page
+│   ├── announcements.js
+│   ├── bsit.jpg
+│   ├── calendar.jpg
+│   ├── cithm.png
+│   ├── listofcandidates.png
+│   └── lpuc-pnp.png
+├── assets/
+│   ├── login-bg-poster.jpg        still image shown before the video plays
+│   ├── login-bg.mp4               login background video
+│   ├── lpu-logo-mobile.png
+│   ├── lpu-logo.png
+│   └── page-transition.js         soft fade between pages
+├── auth/
+│   └── auth.js                    login system and the list of provided accounts
+├── contacts/
+│   ├── contacts.css
+│   ├── contacts.html              contacts page
+│   └── contacts.js
+├── footer/
+│   ├── footer.css
+│   └── footer.js                  shared footer
+├── header/
+│   ├── header.css
+│   └── header.js                  shared header: menus and search
+├── homepage/
+│   ├── images/
+│   │   └── campus-picture.png
+│   ├── view tasks/
+│   │   ├── tasks.css
+│   │   ├── tasks.html             View Tasks page
+│   │   └── tasks.js
+│   ├── homepage.css
+│   ├── homepage.html              home page after logging in
+│   └── homepage.js
+├── login/
+│   ├── login.css
+│   ├── login.html                 login page
+│   └── login.js
+├── my-courses/
+│   ├── images/
+│   │   ├── campus-picture.png
+│   │   ├── database-banner.png
+│   │   ├── electives-banner.png
+│   │   ├── hci-banner.png
+│   │   ├── it-era-banner.png
+│   │   └── oop-banner.png
+│   ├── subjects/
+│   │   ├── submission bin/
+│   │   │   ├── hci-activity.css
+│   │   │   ├── hci-activity.html  activity / submission page
+│   │   │   ├── hci-activity.js
+│   │   │   ├── oop-activity.css
+│   │   │   ├── oop-activity.html
+│   │   │   ├── oop-activity.js
+│   │   │   ├── web-dev-activity.css
+│   │   │   ├── web-dev-activity.html
+│   │   │   └── web-dev-activity.js
+│   │   ├── database.css
+│   │   ├── database.html
+│   │   ├── database.js
+│   │   ├── electives.css
+│   │   ├── electives.html
+│   │   ├── electives.js
+│   │   ├── hci.css
+│   │   ├── hci.html               subject page (one per course)
+│   │   ├── hci.js
+│   │   ├── it-era.css
+│   │   ├── it-era.html
+│   │   ├── it-era.js
+│   │   ├── oop.css
+│   │   ├── oop.html
+│   │   └── oop.js
+│   ├── courses.css
+│   ├── courses.html               courses page
+│   └── courses.js
+├── schedule/
+│   ├── schedule.css
+│   ├── schedule.html              weekly schedule page
+│   └── schedule.js
+├── services/
+│   ├── ARC_LIB.jpg
+│   ├── services.css
+│   ├── services.html              services pages
+│   └── services.js
+├── index.html                     redirects to the login page
+└── README.md
 ```
 
-Each page folder has its own `.html`, `.css`, and `.js` file. The header is shared: every page loads `header/header.js`, which adds the header automatically.
+Each page folder has its own `.html`, `.css`, and `.js` file. The header is shared: every page loads `header/header.js`, which adds the header automatically. The footer works the same way with `footer/footer.js`.
 
 ## Editing the site
 
