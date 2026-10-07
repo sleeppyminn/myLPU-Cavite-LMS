@@ -1,13 +1,13 @@
 /* ===== DATA: course list (edit this to change the cards) ===== */
 const courses = [
-  { code: "ITEN01C", title: "Introduction to Human Computer Interaction", prof: "Ms. Anne Marielle Fortuno", students: 120, color: "#b8b3e8", icon: "pencil", avatar: "#c97b6b" },
-  { code: "CSCN02C", title: "Object-Oriented Programming",  prof: "Mr. John Rommel Tinasas",  students: 98,  color: "#f7a99b", icon: "gears",  avatar: "#5d6b8a" },
-  { code: "ELECL1C", title: "ICT Electives", prof: "Ms. Lizette Mendoza",  students: 130, color: "#f8dc94", icon: "books",  avatar: "#4a5568" },
-  { code: "LVTN01C", title: "Living in the IT Era",  prof: "Mr. Jeric Bryan Lim", students: 112, color: "#a3d9b9", icon: "tools",  avatar: "#a0634d" },
-  { code: "ITEN03C", title: "Fundamentals of Database",  prof: "Mr. Arcell Hadlocon",  students: 105, color: "#f7a99b", icon: "book",   avatar: "#3f4a63" }
+  { code: "ITEN01C", desc: "Learn how people interact with technology and how to design interfaces that are easy and enjoyable to use. Build and test prototypes using user-centered design methods.", title: "Introduction to Human Computer Interaction", href: "subjects/hci.html", prof: "Ms. Anne Marie Reyes", students: 120, color: "#b8b3e8", icon: "pencil", avatar: "#c97b6b" },
+  { code: "CSCN02C", desc: "Learn to write clean, reusable code using classes, objects, inheritance and polymorphism in Python. Apply these concepts to build real-world programs.", title: "Object-Oriented Programming", href: "subjects/oop.html", prof: "Mr. John Lloyd Santos",  students: 98,  color: "#f7a99b", icon: "gears",  avatar: "#5d6b8a" },
+  { code: "ELECL1C", desc: "Explore specialized ICT topics such as cloud computing, IoT and artificial intelligence. Research an area of interest and build a small project around it.", title: "ICT Electives", href: "subjects/electives.html", prof: "Ms. Maine Mendoza",  students: 130, color: "#f8dc94", icon: "books",  avatar: "#4a5568" },
+  { code: "LVTN01C", desc: "Understand how information technology shapes communication, work and everyday life. Learn to use technology responsibly and think critically about its impact on society.", title: "Living in the IT Era", href: "subjects/it-era.html", prof: "Mr. Bryan Acosta", students: 112, color: "#a3d9b9", icon: "tools",  avatar: "#a0634d" },
+  { code: "ITEN03C", desc: "Learn how data is organized, stored and retrieved using the relational model and SQL. Design and build a small database for a real-world scenario.", title: "Fundamentals of Database", href: "subjects/database.html", prof: "Mr. Mark Sumbad",  students: 105, color: "#f7a99b", icon: "book",   avatar: "#3f4a63" }
 ];
-// Each subject opens its own page. To link a subject to a different page, add  href: "your-page.html"  to its entry above.
-function courseHref(c) { return c.href || "subject.html?code=" + encodeURIComponent(c.code || c.title); }
+// Each subject opens its own page. Add  href: "subjects/your-page.html"  to a subject above to link it. Subjects without an href do nothing when clicked yet.
+function courseHref(c) { return c.href || "#"; }
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.";
 
 /* Simple course illustrations (drawn with SVG, shown inside each card's colored panel) */
@@ -28,7 +28,7 @@ function renderCourses(list = courses) {
       <div class="thumb" style="background:${c.color}">${icons[c.icon]}</div>
       ${c.code && c.title ? `<span class="code">${c.code}</span>` : ""}
       <h3>${c.title || c.code}</h3>
-      <p>${lorem}</p>
+      <p>${c.desc || lorem}</p>
       <div class="prof"><span class="pic" style="background:${c.avatar}">${initials}</span>${c.prof}</div>
       <div class="meta">${c.students} students</div>
     </a>`;
