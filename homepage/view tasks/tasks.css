@@ -1,0 +1,132 @@
+:root{--red:#a50f2d;--red-d:#8c0b25;--ring:#c10e2e;--text:#2a1d20;--mute:#7a6a6e;--line:#ece8e9}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100vh;font-family:"Poppins","Segoe UI",Arial,sans-serif;font-size:16px;background:#fff;color:var(--text);padding-top:env(safe-area-inset-top,0)}
+body{display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+small{color:var(--mute);font-size:13.5px}
+.layout{flex:1;display:grid;grid-template-columns:215px 1fr;gap:26px;padding:0 24px 0 0}
+.ic{width:22px;height:22px;fill:currentColor;flex:none}
+
+/* ===== Sidebar (same as courses.css – keep identical) ===== */
+.sidebar{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;padding:18px 12px 20px;background:linear-gradient(180deg,#f8eaed,#f3dde2);border-right:1px solid #ecd3d9}
+.sidebar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:240px;background:url("../../my-courses/images/campus-picture.png") center bottom/cover no-repeat;mix-blend-mode:multiply;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 45%);mask-image:linear-gradient(to bottom,transparent,#000 45%)}
+.sidebar>*{position:relative;z-index:1}
+.profile{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;flex:none}
+.avatar .ic{width:26px;height:26px}
+.student-section{flex-basis:100%;padding-left:2px}
+.menu{display:flex;flex-direction:column;gap:4px;margin-right:-12px}
+.menu a{display:flex;align-items:center;gap:14px;padding:11px 12px;border-radius:10px 0 0 10px;font-weight:500;font-size:15.5px;transition:background .15s}
+.menu a .ic,.logout .ic{color:var(--red-d)}
+.menu a:hover{background:#e6c3cb;color:var(--red-d)}
+.menu a.active{background:var(--red);color:#fff;font-weight:600}
+.menu a.active .ic{color:#fff}
+.menu a.active:hover{background:var(--red-d)}
+.logout{margin-top:auto;display:flex;align-items:center;gap:14px;padding:10px 12px;font-weight:600;font-size:14px;color:var(--red-d)}
+.menu-toggle{display:none;margin-left:auto;background:var(--red);color:#fff;border:0;border-radius:8px;padding:8px 12px;font:inherit;font-size:13px;cursor:pointer}
+
+/* ===== Page content ===== */
+.content{padding:24px 0 40px;min-width:0}
+.top-row{margin-bottom:26px}
+.top-row h1{color:#c20f2f;font-size:36px;font-weight:700;line-height:1.1}
+
+/* ===== Task progress: title on the left, ring + legend centered as one group ===== */
+.progress{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;max-width:1150px;margin:0 auto 34px}
+.progress-title{grid-column:1;align-self:start;font-size:20px;font-weight:600;color:#2a2a2e}
+.progress-body{grid-column:2;display:flex;align-items:center;gap:48px}
+.donut{width:200px;height:200px;border-radius:50%;display:grid;place-items:center;flex:none}
+.donut-center{width:68%;aspect-ratio:1;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.donut-center strong{font-size:32px;font-weight:700;line-height:1.1}
+.donut-center small{font-size:14px}
+.legend{list-style:none;padding:0;min-width:160px;font-size:16px}
+.legend li{display:flex;align-items:center;gap:10px;padding:9px 0}
+.legend li b{margin-left:auto;padding-left:24px;font-weight:600}
+.legend .dot{width:12px;height:12px;border-radius:50%;flex:none}
+.legend .total{border-top:1px solid var(--line);margin-top:2px;padding-left:22px}
+
+/* ===== Task table ===== */
+.task-table{max-width:1150px;margin:0 auto;background:#fff;border:1px solid #e9e5e6;border-radius:14px;box-shadow:0 1px 8px rgba(40,30,60,.05)}
+.t-head,.t-row{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr) 28px;column-gap:16px;align-items:center}
+.t-head{background:#f6f6f7;border-radius:13px 13px 0 0;height:54px;padding:0 22px;border-bottom:1px solid #ece8e9;font-size:14.5px;font-weight:600;color:#2a2a2e}
+#task-rows{padding:0 22px}
+.t-row{position:relative;min-height:66px;padding:8px 0;border-bottom:1px solid #f0eced;transition:background .15s}
+.t-row:last-child{border-bottom:0}
+.t-row:hover{background:#fbf4f5}
+.t-row:has(.row-link:focus-visible){outline:2px solid var(--red);outline-offset:-2px;border-radius:8px}
+.c-ic{display:grid;place-items:center}
+.c-ic svg{width:28px;height:28px}
+.c-ic.blue{color:#2f6fe4}.c-ic.purple{color:#8b5cf6}.c-ic.coral{color:#f0605d}
+.c-name{display:flex;flex-direction:column;gap:1px;min-width:0}
+.c-name b{font-size:15.5px;font-weight:600;line-height:1.35}
+.c-name small{font-size:12px}
+.c-due{font-size:14.5px;color:var(--mute)}
+.c-pri,.c-st{display:flex;align-items:center}   /* keeps every pill (incl. In Progress) centered in its row */
+.c-go{display:grid;place-items:center;color:#2a2a2e}
+.c-go .ic{width:20px;height:20px}
+
+/* the task name is the row's link; its ::after stretches over the whole row so a click anywhere opens the activity */
+.row-link{color:inherit;outline:none}
+.row-link::after{content:"";position:absolute;inset:0}
+/* the status cell sits above that stretched link, so clicking it changes the status instead */
+.c-st{position:relative;z-index:2}
+.c-st.open{z-index:10}
+button.st{border:0;font-family:inherit;cursor:pointer;transition:filter .15s}
+button.st:hover{filter:brightness(.96)}
+button.st:focus-visible,.st-menu button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* status menu */
+.st-menu{position:absolute;top:calc(100% + 6px);left:0;z-index:5;min-width:158px;list-style:none;padding:6px;background:#fff;border:1px solid #e9e5e6;border-radius:12px;box-shadow:0 8px 24px rgba(40,30,60,.16)}
+.st-menu.up{top:auto;bottom:calc(100% + 6px)}
+.st-menu button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;font:inherit;font-size:14px;text-align:left;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text)}
+.st-menu button:hover{background:#fbf4f5}
+.st-menu button[aria-checked="true"]{font-weight:600}
+.mdot{width:12px;height:12px;border-radius:50%;flex:none}
+.mdot.done{background:#1fb866}.mdot.inprogress{background:#2c70e6}.mdot.todo{background:#b9b9bf}
+
+/* priority pills */
+.pri{display:inline-block;min-width:76px;text-align:center;color:#fff;font-size:14px;font-weight:500;padding:6px 18px;border-radius:999px}
+.pri.high{background:#f2192e}
+.pri.medium{background:#ffc400;color:#3b2d00}
+.pri.low{background:#1ea84f}
+
+/* completion status pills */
+.st{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:126px;font-size:14px;font-weight:500;padding:6px 16px;border-radius:999px;color:#1f1a1c}
+.st svg{width:19px;height:19px;flex:none}
+.st.todo{background:#efeff0}
+.st.todo .box{width:16px;height:16px;border:2px solid #8a8a90;border-radius:4px;flex:none}
+.st.inprogress{background:#bcd3f8}
+.st.inprogress svg{color:#2c70e6}
+.st.done{background:#a6dcae}
+.st.done svg{color:#1fb866}
+
+/* ===== Tablet / phone ===== */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;padding:0 14px 14px;gap:0}
+  .sidebar{margin:0 -14px;padding:12px 14px}
+  .sidebar::after{display:none}
+  .menu-toggle{display:block}
+  .sidebar .menu,.sidebar .logout{display:none}
+  .sidebar.open .menu{display:flex}
+  .sidebar.open .logout{display:flex}
+  .sidebar.open::after{display:block;height:200px}
+  .content{padding-top:20px}
+  .top-row h1{font-size:28px}
+  .progress{grid-template-columns:1fr;justify-items:center;gap:18px}
+  .progress-title{grid-column:1;justify-self:start}
+  .progress-body{grid-column:1;flex-direction:column;gap:20px}
+  .donut{width:min(62vw,210px);height:auto;aspect-ratio:1}
+  .legend{width:100%;max-width:280px}
+}
+@media(max-width:760px){
+  .t-head{display:none}
+  #task-rows{padding:0 14px}
+  .t-row{grid-template-columns:minmax(0,1fr) 24px;grid-template-areas:"name go" "due go" "pri go" "st go";row-gap:6px;padding:14px 0}
+  .c-ic{grid-area:ic;align-self:start}
+  .c-name{grid-area:name}
+  .c-due{grid-area:due;font-size:13.5px}
+  .c-due::before{content:"Due: "}
+  .c-pri{grid-area:pri;justify-self:start}
+  .c-st{grid-area:st;justify-self:start}
+  .c-go{grid-area:go;align-self:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
