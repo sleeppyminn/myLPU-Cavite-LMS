@@ -16,7 +16,7 @@ const tasks = [
 ];
 const schedule = [{ month: "SEP", day: 8, title: "ITEN01C - Web Development", time: "8:00 AM - 11:00 AM | Room 302" }];
 const announcements = [
-  { title: "Class Suspension on Sept. 10, 2026", text: "Due to the university event, all classes will be...", date: "Sep 6, 2026" },
+  { title: "Class Event, named 'Beyond the Code' coming up!", text: "According to BSIT 404, an event named Beyond...", date: "Sep 6, 2026" },
   { title: "Deadline Extension for HCI Activity", text: "", date: "" }
 ];
 const general = { completed: 1, pending: 2, percent: 40 };   // percent: ring + center number. Delete "percent" to calculate it from completed/total (1 of 3 = 33%)
