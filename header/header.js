@@ -8,10 +8,9 @@
   /* ---------- MENU: edit here (label, then [text, path-from-site-root]) ---------- */
   var LEFT = [
     { label: 'Home Page', items: [
-      ['Profile',    'homepage/homepage.html#profile'],
-      ['Dashboard',  'homepage/homepage.html#dashboard'],
-      ['My Courses', 'homepage/homepage.html#my-courses'],
-      ['View Tasks', 'homepage/homepage.html#view-tasks'],
+      ['Dashboard',  'homepage/homepage.html'],
+      ['My Courses', 'my-courses/courses.html'],
+      ['View Tasks', 'homepage/view tasks/tasks.html'],
       ['Schedule',   'homepage/homepage.html#schedule'] ] },
     { label: 'About', items: [
       ['What is an LMS?', 'about/about.html#lms'],
