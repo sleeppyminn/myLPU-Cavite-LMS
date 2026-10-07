@@ -11,7 +11,7 @@
       ['Dashboard',  'homepage/homepage.html'],
       ['My Courses', 'my-courses/courses.html'],
       ['View Tasks', 'homepage/view tasks/tasks.html'],
-      ['Schedule',   'homepage/homepage.html#schedule'] ] },
+      ['Schedule',   'schedule/schedule.html'] ] },
     { label: 'About', items: [
       ['What is an LMS?', 'about/about.html#lms'],
       ['About LPU',       'about/about.html#about-lpu'],

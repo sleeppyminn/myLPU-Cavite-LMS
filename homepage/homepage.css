@@ -208,3 +208,6 @@ a.task{color:inherit;text-decoration:none}
 #current-tasks .task.clickable{cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s}
 #current-tasks .task.clickable:hover{background:#f6e6e9;transform:translateY(-1px);box-shadow:0 3px 10px rgba(140,11,37,.12)}
 #current-tasks .task.clickable:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* Sidebar meets the footer: no white gap between them */
+.layout + #site-footer .site-footer{margin-top:0}

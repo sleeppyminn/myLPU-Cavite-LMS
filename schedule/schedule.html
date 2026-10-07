@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Schedule | LPU Cavite LMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<script src="../assets/page-transition.js"></script>
+<link rel="stylesheet" href="schedule.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="sch">
+  <!-- SECTION: Top row (title, Daily/Weekly/Monthly switch, numbers) -->
+  <div class="sch-top">
+    <div><h1>My Schedule</h1><p>Your classes and deadlines at a glance. <a href="../homepage/homepage.html">&larr; Back to Dashboard</a></p></div>
+    <div class="views" id="views">
+      <button data-view="daily">Daily</button><button data-view="weekly" class="on">Weekly</button><button data-view="monthly">Monthly</button>
+    </div>
+    <div class="stats">
+      <div><small>Classes this week</small><b id="st-classes"></b></div>
+      <div><small>Class hours</small><b id="st-hours"></b></div>
+    </div>
+  </div>
+
+  <div class="sch-body">
+    <aside class="side">
+      <!-- SECTION: Mini calendar -->
+      <section class="panel mini">
+        <div class="mini-head"><b id="mini-title"></b><span><button id="mini-prev" aria-label="Previous month">&lsaquo;</button><button id="mini-next" aria-label="Next month">&rsaquo;</button></span></div>
+        <div class="mini-grid" id="mini-grid"></div>
+      </section>
+      <!-- SECTION: My Tasks checklist -->
+      <section class="panel"><div class="p-head"><h2>My Tasks</h2><span>Checklist</span></div><ul class="check-list" id="task-checks"></ul></section>
+      <!-- SECTION: Other Calendar -->
+      <section class="panel"><div class="p-head"><h2>Other Calendar</h2><span>School</span></div><ul class="check-list" id="other-cal"></ul></section>
+    </aside>
+
+    <!-- SECTION: Calendar board (filled by schedule.js) -->
+    <section class="board">
+      <div class="board-head">
+        <h2 id="range"></h2>
+        <div class="nav"><button id="today-btn">Today</button><button id="prev" aria-label="Previous">&lsaquo;</button><button id="next" aria-label="Next">&rsaquo;</button></div>
+      </div>
+      <div class="board-scroll" id="grid"></div>
+    </section>
+  </div>
+</main>
+
+<script src="../header/header.js"></script>
+<script src="../footer/footer.js"></script>
+<script src="../auth/auth.js"></script>
+<script src="schedule.js"></script>
+</body>
+</html>

@@ -31,6 +31,8 @@ There is no sign-up. Accounts are provided, like in a real school LMS.
 |------|--------|-------------|
 | Login | `login/` | Login form with a video background and an opening animation |
 | Home Page | `homepage/` | Profile, Dashboard, My Courses, View Tasks, Schedule, and Announcements |
+| Schedule | `schedule/` | Weekly class grid, deadlines, tasks and school calendar |
+| Footer | `footer/` | Shared footer (Explore, Support, Contact) added to the main pages |
 | My Courses | `my-courses/` | List of enrolled courses |
 | About | `about/` | What is an LMS, About LPU, History, Mission and Vision, Stakeholders, School Certificates |
 | Services | `services/` | Library Services, Admission Steps & Enrollment, IT Support, Registrar Office |
