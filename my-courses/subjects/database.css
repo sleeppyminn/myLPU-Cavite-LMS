@@ -1,0 +1,183 @@
+:root{--red:#a50f2d;--red-d:#8c0b25;--maroon:#901329;--text:#2a1d20;--mute:#7a6a6e;--tint:#fbeff1;--line:#ecd3d9}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100vh;font-family:"Poppins","Segoe UI",Arial,sans-serif;font-size:16px;background:#fff;color:var(--text);padding-top:env(safe-area-inset-top,0)}
+body{display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+small{color:var(--mute);font-size:13.5px}
+.layout{flex:1;display:grid;grid-template-columns:215px 1fr;gap:0;padding:0}
+.ic{width:22px;height:22px;fill:currentColor;flex:none}
+
+/* ===== Sidebar (same as courses.css – keep identical) ===== */
+.sidebar{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;padding:18px 12px 20px;background:linear-gradient(180deg,#f8eaed,#f3dde2);border-right:1px solid #ecd3d9}
+.sidebar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:240px;background:url("../images/campus-picture.png") center bottom/cover no-repeat;mix-blend-mode:multiply;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 45%);mask-image:linear-gradient(to bottom,transparent,#000 45%)}
+.sidebar>*{position:relative;z-index:1}
+.profile{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;flex:none}
+.avatar .ic{width:26px;height:26px}
+.student-section{flex-basis:100%;padding-left:2px}
+.menu{display:flex;flex-direction:column;gap:4px;margin-right:-12px}
+.menu a{display:flex;align-items:center;gap:14px;padding:11px 12px;border-radius:10px 0 0 10px;font-weight:500;font-size:15.5px;transition:background .15s}
+.menu a .ic,.logout .ic{color:var(--red-d)}
+.menu a:hover{background:#e6c3cb;color:var(--red-d)}
+.menu a.active{background:var(--red);color:#fff;font-weight:600}
+.menu a.active .ic{color:#fff}
+.menu a.active:hover{background:var(--red-d)}
+.logout{margin-top:auto;display:flex;align-items:center;gap:14px;padding:10px 12px;font-weight:600;font-size:14px;color:var(--red-d)}
+.menu-toggle{display:none;margin-left:auto;background:var(--red);color:#fff;border:0;border-radius:8px;padding:8px 12px;font:inherit;font-size:13px;cursor:pointer}
+
+/* ===== Page content ===== */
+.content{min-width:0;padding-bottom:28px}
+
+/* Breadcrumb */
+.crumbs{display:flex;align-items:center;gap:6px;padding:22px 24px 14px 16px;font-size:15.5px;color:#b0707e}
+.crumbs a:hover{text-decoration:underline}
+.crumbs .chev{width:20px;height:20px;color:#b0707e}
+.crumbs strong{color:var(--red-d);font-weight:600}
+
+/* Banner: dark tech look drawn in CSS. For a photo, set  banner: "images/your-picture.jpg"  in subject.js */
+.banner{position:relative;aspect-ratio:6/1;min-height:150px;max-height:300px;display:flex;align-items:flex-end;padding:0 24px 12px 16px;color:#fff;overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 20%,rgba(120,185,255,.55),transparent 38%),
+    radial-gradient(circle at 20% 40%,rgba(60,110,170,.45),transparent 40%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 46px),
+    linear-gradient(120deg,#0b1a2e,#12304f 55%,#0a1626);
+  background-size:cover;background-position:center}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.6))}
+.banner.has-photo::before{display:none}
+.banner h1{position:relative;font-weight:500;line-height:1.15}
+.banner h1 span{display:block;font-size:clamp(22px,2.3vw,36px)}
+#banner-code{letter-spacing:.3px}
+
+/* Cards */
+.detail{padding:12px 24px 0 8px;display:flex;flex-direction:column;height:580px}  /* fixed height: same on every tab, so the sidebar never moves */
+.card{background:var(--tint);border-radius:14px;padding:18px 22px}
+.tabs-card{padding-top:14px;flex:1;min-height:0;display:flex;flex-direction:column}
+.tabs-card .tabs{flex:none}
+
+/* Tabs: selected tab has the maroon underline */
+.tabs{position:relative;display:flex;gap:0;margin-bottom:22px;max-width:326px;border-bottom:1px solid #ddd;width:max-content;max-width:100%;flex-wrap:wrap}
+.tab{background:none;border:0;font:inherit;font-size:12.5px;font-weight:500;color:#555;padding:8px 14px 9px;margin-bottom:-1px;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s,border-color .15s}
+.tab:hover{color:var(--red-d)}
+.tab[aria-selected="true"]{color:var(--red-d);font-weight:600}
+/* the maroon underline: one bar that slides to whichever tab is selected (moved by moveLine() in hci.js) */
+.tab-line{position:absolute;left:0;top:0;height:2px;width:0;background:var(--red-d);pointer-events:none;transition:transform .3s cubic-bezier(.4,0,.2,1),width .3s cubic-bezier(.4,0,.2,1)}
+.tab-line.no-anim{transition:none}
+.tab:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+.panel{flex:1;min-height:0;overflow-y:auto;padding-right:4px}  /* long content scrolls inside the card */
+.panel[hidden]{display:none}
+.panel h2{font-size:16px;font-weight:600;color:var(--red-d);margin-bottom:16px}
+.panel h3{font-size:14px;font-weight:600;color:var(--red-d);margin:18px 0 8px}
+.panel p{font-size:12.5px;line-height:1.6;color:#4d4347}
+.panel ul{padding-left:18px;font-size:12.5px;line-height:1.7;color:#4d4347}
+
+/* Teacher tab */
+.teacher{display:flex;gap:22px;align-items:stretch}
+.t-left{width:150px;flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding-right:22px;border-right:1px solid #e6cdd3}
+.photo{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,#c97b6b,#8c0b25);color:#fff;display:grid;place-items:center;font-weight:600;font-size:24px;border:3px solid #fff;box-shadow:0 0 0 1px #e6cdd3;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.t-stats{display:flex;flex-direction:column;gap:6px;font-size:11px;color:#555;margin-top:auto}
+.t-stats div{display:flex;align-items:center;gap:8px}
+.t-stats .ic{width:15px;height:15px;color:#6b6f76}
+.t-right{flex:1;min-width:0}
+.t-right h3.name{font-size:14px;font-weight:600;color:var(--red-d);margin:0 0 2px}
+.t-role{font-size:11px;color:#555;margin-bottom:8px}
+.t-right p{max-width:560px;margin-bottom:12px}
+
+/* Description + Course Content tabs */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:6px}
+.fact{background:#fff;border-radius:10px;padding:10px 12px;border:1px solid #f0dfe2}
+.fact small{display:block;font-size:11px}
+.fact b{font-size:13px;font-weight:600}
+.module{background:#fff;border:1px solid #f0dfe2;border-radius:10px;margin-bottom:8px;overflow:hidden}
+.module button{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:none;border:0;font:inherit;color:var(--text);padding:20px 22px;cursor:pointer}
+.m-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.m-title{font-size:16px;font-weight:600}
+.m-desc{font-size:13px;font-weight:400;line-height:1.45;color:var(--mute)}
+.module button small{margin-left:auto;padding-left:12px;font-weight:400;font-size:12.5px;white-space:nowrap}
+.module .arr{width:18px;height:18px;color:var(--red-d);transition:transform .2s}
+.module.open .arr{transform:rotate(90deg)}
+/* smooth slide-down: the body animates its row height from 0 to its natural height */
+.m-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1)}
+.module.open .m-body{grid-template-rows:1fr}
+.m-body>ul{list-style:none;padding:0;min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .35s}
+.module.open .m-body>ul{visibility:visible;transition-delay:0s}
+.module li{font-size:13.5px;color:#4d4347;padding:7px 0;margin:0 22px 0 52px;border-top:1px dashed #efdde1}
+.module li:last-child{margin-bottom:14px}
+
+/* Courses Taught + Message from the Teacher */
+.teacher-extra{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;height:180px;flex:none}
+.teacher-extra[hidden]{display:none}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-head h2{font-size:15px;font-weight:600;color:var(--red-d)}
+.badge-ic{width:22px;height:22px;display:grid;place-items:center;color:var(--red-d)}
+.badge-ic .ic{width:20px;height:20px}
+.badge-ic.quote{background:var(--red-d);color:#fff;border-radius:50%;width:20px;height:20px;font-size:17px;line-height:1;padding-top:5px;font-family:Georgia,serif}
+.taught{display:flex;align-items:center;gap:10px;padding:8px 0 8px 32px;border-bottom:1px solid #ecd9dd}
+.taught:last-child{border-bottom:0}
+.taught div{flex:1}
+.taught b{display:block;font-size:14px;font-weight:600}
+.taught small{font-size:12.5px}
+.taught .ic{width:18px;height:18px;color:#555}
+.quote-text{margin:6px 0 12px 32px;font-style:italic;font-size:14px;line-height:1.6;color:#555;max-width:520px}
+.quote-by{margin-left:32px;font-style:italic;font-size:13px;color:#555}
+
+/* ===== Tablet / phone ===== */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{padding:12px 14px}
+  .sidebar::after{display:none}
+  .menu-toggle{display:block}
+  .sidebar .menu,.sidebar .logout{display:none}
+  .sidebar.open .menu{display:flex}
+  .sidebar.open .logout{display:flex}
+  .sidebar.open::after{display:block;height:200px}
+  .crumbs{padding:16px 14px 12px}
+  .banner{padding:0 14px 12px;aspect-ratio:auto;height:150px}
+  .banner h1 span{font-size:21px}
+  .detail{padding:12px 10px 0}
+  .teacher-extra{grid-template-columns:1fr;height:auto}
+  .detail{height:auto}
+  .panel{overflow:visible}
+}
+@media(max-width:600px){
+  .teacher{flex-direction:column}
+  .t-left{width:100%;flex-direction:row;align-items:center;border-right:0;border-bottom:1px solid #e6cdd3;padding:0 0 14px}
+  .t-stats{margin-top:0}
+  .tabs{width:100%}
+  .tab{padding:8px 10px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Activity item inside a module (clickable) */
+.module li a{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--red-d);font-weight:500}
+.module li a b{font-weight:700}
+.module li a:hover{text-decoration:underline}
+
+/* Rows inside the bottom cards (Description and Course Content tabs) */
+.info-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0 6px 32px;border-bottom:1px solid #ecd9dd;font-size:12px;color:#555}
+.info-row:last-child{border-bottom:0}
+.info-row b{font-weight:600;color:var(--text);text-align:right}
+
+/* Course Content tab: the module list stretches to fill the card, so there is no empty space under it */
+#panel-content:not([hidden]){display:flex;flex-direction:column}
+#panel-content h2{flex:none}
+#panel-content .module{flex:1 0 auto;display:flex;flex-direction:column;min-height:56px}
+#panel-content .module:last-child{margin-bottom:0}
+#panel-content .module>button{flex:1 0 auto}
+@media(max-width:900px){#panel-content .module{flex:none}}
+
+/* Description tab's bottom row is a little taller to fit the grading table */
+#extra-description{height:212px}
+.info-row.head span{font-weight:600;color:var(--text)}
+.info-row.total span{font-weight:600;color:var(--text)}
+.grade-note{margin:0 0 0 32px;padding-top:8px;font-size:11.5px;line-height:1.5;color:#555}
+.grade-note b{color:var(--red-d);font-weight:600}
+@media(max-width:900px){#extra-description{height:auto}}
+
+/* "Submitted" tag on a finished activity (same green as Completed on the homepage) */
+.submitted{flex:none;background:#d6f0e0;color:#1f7a45;font-size:11.5px;font-weight:500;padding:3px 12px;border-radius:12px}
+
+/* "Not Submitted" tag (same red as Pending on the homepage) */
+.submitted.not{background:#f9d9de;color:var(--red)}
