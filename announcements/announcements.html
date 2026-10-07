@@ -6,45 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Announcements | LPU Cavite LMS</title>
 <link rel="stylesheet" href="announcements.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
 <style>
-  body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
-      color: #333;
-      font-family: "Montserrat", Arial, sans-serif;
-    }
-    ul.articles {
-      list-style: disc;
-      margin: 0;
-      padding-left: 24px;
-    }
-    ul.articles li {
-      margin-bottom: 22px;
-      line-height: 1.3;
-    }
-    ul.articles li::marker {
-      color: #333;
-    }
-    .title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #8b1a1a;
-      text-decoration: none;
-    }
-    .title:hover {
-      text-decoration: underline;
-    }
-    .author,
-    .date {
-      display: block;
-      font-size: 13px;
-      font-weight: 400;
-      color: #444;
-    }
-    .author { margin-top: 9px; }
-    .date   { margin-top: 8px; }
+  /* Only the article list is styled here. Font, heading and spacing come from announcements.css, same as Services and Contacts. */
+  ul.articles { list-style: disc; margin: 12px 0 0; padding-left: 24px; }
+  ul.articles li { margin-bottom: 18px; line-height: 1.45; }
+  ul.articles li::marker { color: #c8102e; }
+  .title { font-size: 1.05rem; font-weight: 600; color: #c8102e; text-decoration: none; }
+  .title:hover { color: #9b0c23; text-decoration: underline; }
+  .author, .date { display: block; font-size: .9rem; font-weight: 400; color: #5a5b60; }
+  .author { margin-top: 4px; }
+  .date   { margin-top: 2px; }
+  /* Latest News cards */
+  #news td h2 { font-size: 1.05rem; line-height: 1.35; margin: 12px 0 8px; }
+  #news td h2 a { color: #9b0c23; text-decoration: none; }
+  #news td h2 a:hover { text-decoration: underline; }
+  #news td p { font-size: .95rem; line-height: 1.5; margin: 0 0 10px; }
+  #news td a { color: #c8102e; }
+  #news img { display: block; height: auto; border-radius: 8px; }
 </style>
 </head>
 <body>
@@ -239,14 +217,10 @@
       <span class="date">April 19, 2024</span>
     </li>
   </ul>
- 
-</body>
-</html>
+  </section>
 
-<section id="news">
+  <section id="news">
     <h2>Latest News</h2>
-    <body>
- 
   <table width="100%" cellpadding="15">
     <tr valign="top">
  
@@ -289,8 +263,6 @@
  
     </tr>
   </table>
- 
-</body>
   </section>
 
   <section id="class-dept">
